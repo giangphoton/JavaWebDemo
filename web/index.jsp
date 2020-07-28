@@ -19,28 +19,28 @@
     if (s_email == null || s_email == "") {
         s_email = "Not Logged";
     }
-    
+
     // COOKIE: check if email logged in or not
-//    Cookie[] cookies = request.getCookies();
-//    String cookieName = "email";
-//    String c_email = "";
-////    for (int i = 0; i < cookies.length; i++){
-////        Cookie cookie = cookies[i];
-////        if (cookieName.equals(cookie.getName())) {
-////            c_email = cookie.getValue();
-////        }
-////    }
-//    if (c_email == null || c_email == "") {
-//        c_email = "Not Logged";
-//    }
+    Cookie[] cookies = request.getCookies();
+    String cookieName = "email";
+    String c_email = "";
+    for (int i = 0; i < cookies.length; i++) {
+        Cookie cookie = cookies[i];
+        if (cookieName.equals(cookie.getName())) {
+            c_email = cookie.getValue();
+        }
+    }
+    if (c_email == null || c_email == "") {
+        c_email = "Not Logged";
+    }
 
 %>
 
 <h1>Join our email list</h1>
 <!--SHOW SESSION UI-->
-<p>Your email address stored in session: <%= s_email %> </p>
+<p>Your email address stored in session: <%= s_email%> </p>
 <!--SHOW COOKIES UI-->
-<!--<p>Your email address stored in cookies <%= c_email %> </p>-->
+<p>Your email address stored in cookies: <%= c_email%> </p>
 
 <p>To join our email list, enter your name and
     email address below. <br>

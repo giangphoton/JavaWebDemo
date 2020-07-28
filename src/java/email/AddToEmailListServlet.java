@@ -100,8 +100,13 @@ public class AddToEmailListServlet extends HttpServlet {
         session.setAttribute("email", emailAddress);
 
         // COOKIES
-//        Cookie emailCookie = new Cookie("email", emailAddress);
-//        emailCookie.setMaxAge(365*24*60*60); 
+        // client create a new cookie
+        Cookie emailCookie = new Cookie("email", emailAddress);
+        emailCookie.setMaxAge(365*24*60*60); 
+        // url to return the cookie
+        emailCookie.setPath("/");
+        // add cookie to response which sent back to client
+        response.addCookie(emailCookie);
         
         // forward request and response to the view
         //String url = "/display_email_entry.jsp";
