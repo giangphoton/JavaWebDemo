@@ -22,7 +22,7 @@
     button in your browser or the Return button shown <br>
     below.</p>
 
-    <form action="index.html" method="post">
+    <form action="index.jsp" method="post">
         <input type="submit" value="Return">
     </form>
     <%@ include file="footer.jsp" %>

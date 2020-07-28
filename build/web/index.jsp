@@ -24,12 +24,16 @@
     Cookie[] cookies = request.getCookies();
     String cookieName = "email";
     String c_email = "";
-    for (int i = 0; i < cookies.length; i++) {
-        Cookie cookie = cookies[i];
-        if (cookieName.equals(cookie.getName())) {
-            c_email = cookie.getValue();
+    // 1st time to browser, no cookie available yet
+    if (cookies != null) {
+        for (int i = 0; i < cookies.length; i++) {
+            Cookie cookie = cookies[i];
+            if (cookieName.equals(cookie.getName())) {
+                c_email = cookie.getValue();
+            }
         }
     }
+
     if (c_email == null || c_email == "") {
         c_email = "Not Logged";
     }
@@ -50,15 +54,15 @@
     <table cellspacing="5" border="0">
         <tr>
             <td align="right">First name:</td>
-            <td><input type="text" name="firstName" value="<%= user.getFirstName()%>"> </td
+            <td><input type="text" name="firstName" value="${user.firstName}"> </td
             </td>
         </tr>
         <tr>
             <td align="right">Last name:</td>
-            <td><input type="text" name="lastName" value="<%= user.getLastName()%>"> </td>
+            <td><input type="text" name="lastName" value="${user.lastName}"> </td>
         <tr>
             <td align="right">Email address:</td>
-            <td><input type="text" name="emailAddress" value="<%= user.getEmailAddress()%>"> 
+            <td><input type="text" name="emailAddress" value="${user.emailAddress}"> 
             </td>
         </tr>
         <tr>

@@ -72,24 +72,24 @@ public class AddToEmailListServlet extends HttpServlet {
         // validate the parameters
         String message = "";
         String url = "";
+        // if error in inputs, 
         if (firstName.length() == 0
                 || lastName.length() == 0
                 || emailAddress.length() == 0) {
-            message
-                    = "Please fill out all three text boxes.";
+            message = "Please fill out all three text boxes.";
             url = "/index.jsp";
         } else {
             message = "";
-//            ServletConfig config = getServletConfig();
-//            String relativePath = config.getInitParameter("relativaPathToFile");
+            ServletConfig config = getServletConfig();
+            String relativePath = config.getInitParameter("relativePathToFile");
 
             ServletContext context = getServletContext();
-//            String path = context.getRealPath(relativePath);
-            String pathSave = context.getRealPath("/WEB-INF/EmailList.txt");
+            String path = context.getRealPath(relativePath);
+//            String pathSave = context.getRealPath("/WEB-INF/EmailList.txt");
 
-            //System.out.println(path);
-            UserIO.add(user, pathSave);
-//            UserIO.add(user, path);
+//            System.out.println(path);
+//            UserIO.add(user, pathSave);
+            UserIO.add(user, path);
             url = "/display_email_entry.jsp";
         }
         request.setAttribute("user", user);
